@@ -8,24 +8,40 @@ body{
 
 #container{
     display: flex;
-    border-radius: 20px;
+}
+
+.container_main_img{
+    position: relative;
 }
 
 .container_main_img img{
     width: 600px;
     height: 400px;
+    object-fit: cover;
+}
 
+.container_main_img_titolo{
+    position: relative;
 }
 
 .active{
     display: block;
     filter: brightness(1);
-    border: 2px soldi white;
+    border: 2px solid rgba(255, 255, 255, 0.5);
 }
 
 .item{
     display: none;
     filter: brightness(0.3);
+}
+
+.titolo_image{
+    width: 90%;
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    text-align: end;
+    color: white;
 }
 
 .container_thumbs{
@@ -34,20 +50,31 @@ body{
     height: 400px;
 }
 
+.thumb{
+    width: 100%;
+    height: calc(100% / 5);
+}
+
+.thumb img{
+    width: 200px;
+    height: 100%;
+    object-fit: cover;
+}
+
 .prev{
     position: absolute;
     top: 5px;
     left: 50%;
     transform: translate(-50%);
-    
+    z-index: 1;
 }
-
 
 .next{
     position: absolute;
     bottom: 5px;
     left: 50%;
     transform: translate(-50%);
+    z-index: 1;
 }
 
 .prev i,
@@ -56,15 +83,4 @@ body{
     padding: 5px;
     border-radius: 50%;
     cursor: pointer;
-}
-
-.thumb{
-    width: 100%;
-    height: calc(100% / 5);
-    
-}
-
-.thumb img{
-    width: 200px;
-    height: 100%;
 }

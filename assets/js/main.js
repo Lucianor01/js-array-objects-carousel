@@ -43,3 +43,36 @@ const images = [
         text: 'Marvel\'s Avengers is an epic, third-person, action-adventure game that combines an original, cinematic story with single-player and co-operative gameplay.',
     }
 ];
+
+let primaImmagine = true;
+
+for (let i = 0; i < images.length; i++) {
+
+    let singoloElemento = images[i]
+    let path = "./assets/"
+    let active = "";
+
+    if (primaImmagine) {
+        active = "active";
+        primaImmagine = false;
+    }
+
+    document.querySelector('.container_main_img').innerHTML += `
+    <div class="container_main_img_titolo ${active} item">
+        <img src="${path}${singoloElemento.image}" alt="immagini">
+        <div class="titolo_image" id='${i}'>
+            <h5 class="card-title">${singoloElemento.title}</h5>
+            <span class="card-text">${singoloElemento.text}</span>
+        </div>
+    </div>
+    `
+
+    document.querySelector('.container_thumbs').innerHTML += `
+    <div class="thumb ${active}">
+        <img src="${path}${singoloElemento.image}" alt="">
+    </div>
+    `
+}
+
+const activeClass = document.querySelectorAll('.item');
+activeClass[0].classList.remove('item');
