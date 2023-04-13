@@ -20,10 +20,6 @@
 */
 
 
-
-
-
-
 const images = [
     {
         image: 'img/01.webp',
