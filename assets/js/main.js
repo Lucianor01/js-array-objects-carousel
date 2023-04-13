@@ -61,7 +61,7 @@ for (let i = 0; i < images.length; i++) {
     document.querySelector('.container_main_img').innerHTML += `
     <div class="container_main_img_titolo item">
         <img src="${path}${singoloElemento.image}" alt="immagini">
-        <div class="titolo_image" id='${i}'>
+        <div class="titolo_image" >
             <h5 class="card-title">${singoloElemento.title}</h5>
             <span class="card-text">${singoloElemento.text}</span>
         </div>
@@ -104,6 +104,9 @@ prev.addEventListener('click', function () {
     activeThumb[contatore].classList.add('active');
     activeThumb[contatore].style.filter = 'brightness(1)';
     document.querySelector('.container_main_img img').src = `${path}${images[contatore].image}`;
+    document.querySelector('.titolo_image .card-title').innerHTML = images[contatore].title;
+    document.querySelector('.titolo_image .card-text').innerHTML = images[contatore].text;
+
 })
 
 next.addEventListener('click', function () {
@@ -111,10 +114,31 @@ next.addEventListener('click', function () {
     activeThumb[contatore].classList.remove('active');
     activeThumb[contatore].style.filter = 'brightness(0.3)';
     contatore++;
-    if (contatore >= images.length) {
+    if (contatore == images.length) {
         contatore = 0;
     }
     activeThumb[contatore].classList.add('active');
     activeThumb[contatore].style.filter = 'brightness(1)';
     document.querySelector('.container_main_img img').src = `${path}${images[contatore].image}`;
+    document.querySelector('.titolo_image .card-title').innerHTML = images[contatore].title;
+    document.querySelector('.titolo_image .card-text').innerHTML = images[contatore].text;
+
 })
+
+const start = document.querySelector('.btn-success')
+const stop = document.querySelector('.btn-danger')
+
+function autoPlay(startButton) {
+    startButton.click();
+}
+
+start.addEventListener('click', () => {
+    stopPlay = setInterval(() => {
+        autoPlay(next);
+    },1000);
+});
+
+stop.addEventListener('click', () => {
+    clearInterval(stopPlay);
+    stopPlay = null;
+});
