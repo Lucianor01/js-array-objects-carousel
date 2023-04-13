@@ -45,11 +45,12 @@ const images = [
 ];
 
 let primaImmagine = true;
+let path = "./assets/"
 
 for (let i = 0; i < images.length; i++) {
 
     let singoloElemento = images[i]
-    let path = "./assets/"
+    
     let active = "";
 
     if (primaImmagine) {
@@ -58,7 +59,7 @@ for (let i = 0; i < images.length; i++) {
     }
 
     document.querySelector('.container_main_img').innerHTML += `
-    <div class="container_main_img_titolo ${active} item">
+    <div class="container_main_img_titolo item">
         <img src="${path}${singoloElemento.image}" alt="immagini">
         <div class="titolo_image" id='${i}'>
             <h5 class="card-title">${singoloElemento.title}</h5>
@@ -74,5 +75,26 @@ for (let i = 0; i < images.length; i++) {
     `
 }
 
+let contatore = 0;
+
 const activeClass = document.querySelectorAll('.item');
 activeClass[0].classList.remove('item');
+
+const activeThumb = document.querySelectorAll('.thumb img');
+activeThumb[0].style.filter = 'brightness(1)';
+
+
+const prev = document.querySelector('.prev')
+const next = document.querySelector('.next')
+
+
+
+prev.addEventListener('click',function(){
+    activeThumb[contatore].style.filter = 'brightness(0.3)';
+    contatore--;
+    if (contatore < 0) {
+        contatore = images.length -1;
+    }
+    activeThumb[contatore].style.filter = 'brightness(1)';
+    document.querySelector('.container_main_img img').src = `${path}${images[contatore].image}`;
+})
