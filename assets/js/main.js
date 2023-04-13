@@ -50,7 +50,7 @@ let path = "./assets/"
 for (let i = 0; i < images.length; i++) {
 
     let singoloElemento = images[i]
-    
+
     let active = "";
 
     if (primaImmagine) {
@@ -83,18 +83,29 @@ activeClass[0].classList.remove('item');
 const activeThumb = document.querySelectorAll('.thumb img');
 activeThumb[0].style.filter = 'brightness(1)';
 
-
 const prev = document.querySelector('.prev')
 const next = document.querySelector('.next')
 
-
-
-prev.addEventListener('click',function(){
+prev.addEventListener('click', function () {
+    activeThumb[contatore].classList.remove('active');
     activeThumb[contatore].style.filter = 'brightness(0.3)';
     contatore--;
     if (contatore < 0) {
-        contatore = images.length -1;
+        contatore = images.length - 1;
     }
+    activeThumb[contatore].classList.add('active');
+    activeThumb[contatore].style.filter = 'brightness(1)';
+    document.querySelector('.container_main_img img').src = `${path}${images[contatore].image}`;
+})
+
+next.addEventListener('click', function () {
+    activeThumb[contatore].classList.remove('active');
+    activeThumb[contatore].style.filter = 'brightness(0.3)';
+    contatore++;
+    if (contatore >= images.length) {
+        contatore = 0;
+    }
+    activeThumb[contatore].classList.add('active');
     activeThumb[contatore].style.filter = 'brightness(1)';
     document.querySelector('.container_main_img img').src = `${path}${images[contatore].image}`;
 })
