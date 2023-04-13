@@ -86,7 +86,15 @@ activeThumb[0].style.filter = 'brightness(1)';
 const prev = document.querySelector('.prev')
 const next = document.querySelector('.next')
 
+const thumb = document.querySelectorAll('.thumb');
+thumb.forEach((thumbElement) => {
+    thumbElement.classList.remove('active');
+});
+
+thumb[0].classList.add('active');
+
 prev.addEventListener('click', function () {
+    thumb[0].classList.remove('active');
     activeThumb[contatore].classList.remove('active');
     activeThumb[contatore].style.filter = 'brightness(0.3)';
     contatore--;
@@ -99,6 +107,7 @@ prev.addEventListener('click', function () {
 })
 
 next.addEventListener('click', function () {
+    thumb[0].classList.remove('active');
     activeThumb[contatore].classList.remove('active');
     activeThumb[contatore].style.filter = 'brightness(0.3)';
     contatore++;
