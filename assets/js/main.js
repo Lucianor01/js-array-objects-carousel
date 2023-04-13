@@ -126,6 +126,7 @@ next.addEventListener('click', function () {
 })
 
 const start = document.querySelector('.btn-success')
+const reverse = document.querySelector('.btn-warning')
 const stop = document.querySelector('.btn-danger')
 
 function autoPlay(startButton) {
@@ -135,7 +136,13 @@ function autoPlay(startButton) {
 start.addEventListener('click', () => {
     stopPlay = setInterval(() => {
         autoPlay(next);
-    },1000);
+    }, 1000);
+});
+
+reverse.addEventListener('click', () => {
+    stopPlay = setInterval(() => {
+        autoPlay(prev);
+    }, 1000);
 });
 
 stop.addEventListener('click', () => {
