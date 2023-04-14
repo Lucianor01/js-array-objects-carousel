@@ -44,19 +44,11 @@ const images = [
     }
 ];
 
-let primaImmagine = true;
 let path = "./assets/"
 
 for (let i = 0; i < images.length; i++) {
 
     let singoloElemento = images[i]
-
-    let active = "";
-
-    if (primaImmagine) {
-        active = "active";
-        primaImmagine = false;
-    }
 
     document.querySelector('.container_main_img').innerHTML += `
     <div class="container_main_img_titolo item">
@@ -69,7 +61,7 @@ for (let i = 0; i < images.length; i++) {
     `
 
     document.querySelector('.container_thumbs').innerHTML += `
-    <div class="thumb ${active}">
+    <div class="thumb">
         <img src="${path}${singoloElemento.image}" alt="">
     </div>
     `
@@ -147,5 +139,4 @@ reverse.addEventListener('click', () => {
 
 stop.addEventListener('click', () => {
     clearInterval(stopPlay);
-    stopPlay = null;
 });
