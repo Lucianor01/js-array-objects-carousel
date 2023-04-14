@@ -128,13 +128,13 @@ function autoPlay(startButton) {
 start.addEventListener('click', () => {
     stopPlay = setInterval(() => {
         autoPlay(next);
-    }, 1000);
+    }, 3000);
 });
 
 reverse.addEventListener('click', () => {
     stopPlay = setInterval(() => {
         autoPlay(prev);
-    }, 1000);
+    }, 3000);
 });
 
 stop.addEventListener('click', () => {
